@@ -1,14 +1,14 @@
 # Social Media Post Manager
 
 - [Social Media Post Manager](#social-media-post-manager)
-  - [Part I: Calendar and Scheduler](#part-i-calendar-and-scheduler)
-    - [Part Ia: Features](#part-ia-features)
-  - [Part II: Post Creator](#part-ii-post-creator)
-    - [Part IIa: Features](#part-iia-features)
+  - [Part 1: Calendar and Scheduler](#part-1-calendar-and-scheduler)
+    - [Part 1a: Features](#part-1a-features)
+  - [Part 2: Post Creator](#part-2-post-creator)
+    - [Part 2a: Features](#part-2a-features)
 
-## Part I: Calendar and Scheduler
+## Part 1: Calendar and Scheduler
 
-### Part Ia: Features
+### Part 1a: Features
 
 - [x] Create a calendar from a specified year
 
@@ -23,8 +23,8 @@
 
 - [ ] Generate statistics (e.g., time between events)
 
-## Part II: Post Creator
+## Part 2: Post Creator
 
-### Part IIa: Features
+### Part 2a: Features
 
 - [ ] ...

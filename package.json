@@ -1,7 +1,5 @@
 {
-  "name": "vite-project",
-  "private": true,
-  "version": "0.0.0",
+  "name": "social-media-post-manager",
   "type": "module",
   "scripts": {
     "dev": "vite",

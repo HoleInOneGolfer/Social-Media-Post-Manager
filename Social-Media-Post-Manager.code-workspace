@@ -19,7 +19,6 @@
 			"source.organizeLinkDefinitions": "always",
 		},
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"prettier.enable": ,
 	},
 	"launch": {
 		"version": "0.2.0",

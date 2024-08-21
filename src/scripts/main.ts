@@ -1,19 +1,17 @@
-import '../styles/style.css';
-const { BASE_URL } = import.meta.env;
+import '../styles/style.css'
 
-import { createCalendar } from './calendar';
-import { createYear } from '../components/calendar.elements';
+import { createYear } from '../components/calendar.elements'
+import { createCalendar } from './calendar'
 
-document.addEventListener( 'DOMContentLoaded', () =>
-{
-    console.log( 'Base URL:', BASE_URL );
-    const main = document.querySelector( 'main' );
+const { BASE_URL } = import.meta.env
 
-    let calendar = createCalendar( 2024 );
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Base URL:', BASE_URL)
+  const main = document.querySelector('main')
 
-    if ( main )
-    {
-        main.appendChild( createYear( calendar ) );
-    }
+  const calendar = createCalendar(2024)
 
-} );
+  if (main) {
+    main.appendChild(createYear(calendar))
+  }
+})

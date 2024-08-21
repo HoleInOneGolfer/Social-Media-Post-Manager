@@ -9,7 +9,6 @@
     "build": "tsc && vite build"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.27.0",
     "@vitejs/plugin-legacy": "^5.4.2",
     "@vitest/coverage-v8": "^2.0.5",
     "terser": "^5.31.6",

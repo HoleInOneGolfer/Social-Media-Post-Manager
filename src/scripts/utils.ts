@@ -10,7 +10,7 @@ export function getDates ( year: number ): Date[]
         dates.push( new Date( current ) );
     }
 
-    return dates
+    return dates;
 }
 
 export interface Day
@@ -21,15 +21,14 @@ export interface Day
 
 export function createCalendar ( year: number ): Day[][]
 {
-    let dates = getDates( year );
-    let calendar: Day[][] = Array.from( { length: 12 }, () => [] );
+    const dates = getDates( year );
+    const calendar: Day[][] = Array.from( { length: 12 }, () => [] );
+
     for ( let m = 0; m < 12; m++ )
     {
-        const days: Date[] = dates.filter( date => date.getMonth() === m );
-        days.forEach( ( date, index ) =>
-        {
-            calendar[ m ][ index ] = { date, events: [] };
-        } );
+        calendar[ m ] = dates
+            .filter( ( date ) => date.getMonth() === m )
+            .map( ( date ) => ( { date, events: [] } ) );
     }
 
     return calendar;

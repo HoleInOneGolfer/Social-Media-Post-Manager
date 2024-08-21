@@ -23,9 +23,19 @@
 
 - [ ] Generate statistics (e.g., time between events)
 
-
 ## Part II: Post Creator
 
 ### Part IIa: Features
 
 - [ ] ...
+
+<style>
+* {
+  font-family: Courier, monospace;
+
+}
+
+h1, h2, h3 {
+    text-align: center;
+  }
+</style>

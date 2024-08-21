@@ -2,7 +2,7 @@ import '../styles/style.css';
 const { BASE_URL } = import.meta.env;
 
 import { createCalendar } from './calendar';
-
+import { createYear } from '../components/calendar.elements';
 
 document.addEventListener( 'DOMContentLoaded', () =>
 {
@@ -13,7 +13,7 @@ document.addEventListener( 'DOMContentLoaded', () =>
 
     if ( main )
     {
-
+        main.appendChild( createYear( calendar ) );
     }
 
 } );

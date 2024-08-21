@@ -17,9 +17,13 @@
     "noEmit": true,
     /* Linting */
     "strict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": true
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipDefaultLibCheck": true,
   },
   "include": [
     "src"
@@ -28,5 +32,5 @@
     "node_modules",
     "test/**",
     "**/*.test.ts",
-  ]
+  ],
 }

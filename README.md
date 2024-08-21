@@ -10,17 +10,19 @@
 
 ### Part Ia: Features
 
-- [x] Create a calendar from year
-- [ ] Save/Load calendar to/from file
-- [ ] Allow user to add events to the calendar
-  - [ ] Add holidays automatically
-  - [ ] Add events manually
-  - [ ] Add events from a file
-- [ ] Export the calendar
-  - [ ] List inside a document
-  - [ ] Traditional Calendar format
-- [ ] Preview Calendar live
-- [ ] Generate Stats from calendar (e. g. time between events)
+- [x] Create a calendar from a specified year
+
+- [ ] Save and load calendar to/from a file
+
+- [ ] Add events (automatically or manually)
+- [ ] Import events from a file
+
+- [ ] Export the calendar as a list or in a traditional calendar format
+
+- [ ] Preview the calendar live
+
+- [ ] Generate statistics (e.g., time between events)
+
 
 ## Part II: Post Creator
 

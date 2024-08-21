@@ -6,5 +6,14 @@ import * as util from './utils';
 
 document.addEventListener( 'DOMContentLoaded', () =>
 {
+    console.log( 'Base URL:', BASE_URL );
     const main = document.querySelector( 'main' );
+
+    if ( main )
+    {
+    }
+
+    let calendar = util.createCalendar( 2024 );
+    console.table( calendar )
+
 } );

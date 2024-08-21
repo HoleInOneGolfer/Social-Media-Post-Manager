@@ -1,18 +1,18 @@
-table {
-    text-align: center;
-    border-collapse: collapse;
-    border: 1px solid black;
-
-    margin: 1rem;
-}
-
-thead, tbody, tr, th, td {
-    border: 1px solid black;
-    padding: 0.5rem;
-}
-
 #app {
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin: 0.5rem;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
 }

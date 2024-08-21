@@ -10,7 +10,7 @@
 
 ### Part Ia: Features
 
-- [x] Create a calendar from year
+- [ ] Create a calendar from year
 - [ ] Save/Load calendar to/from file
 - [ ] Allow user to add events to the calendar
   - [ ] Add holidays automatically

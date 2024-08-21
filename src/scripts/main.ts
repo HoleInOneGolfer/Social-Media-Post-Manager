@@ -5,13 +5,15 @@ import { createCalendar } from './calendar'
 
 const { BASE_URL } = import.meta.env
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Base URL:', BASE_URL)
-  const main = document.querySelector('main')
+document.addEventListener( 'DOMContentLoaded', () =>
+{
+  console.log( 'Base URL:', BASE_URL )
+  const main = document.querySelector( 'main' )
 
-  const calendar = createCalendar(2024)
+  const calendar = createCalendar( 2024 )
 
-  if (main) {
-    main.appendChild(createYear(calendar))
+  if ( main )
+  {
+    main.appendChild( createYear( calendar ) )
   }
-})
+} )

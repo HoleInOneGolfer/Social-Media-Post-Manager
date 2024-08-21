@@ -1,40 +1,46 @@
-import { describe, it, expect } from 'vitest'
-import { getDates, createCalendar, Day } from '../src/scripts/calendar';
+import { describe, expect, it } from 'vitest';
+import { Calendar } from '../src/scripts/calendar';
 
-// Tests for getDates
-describe( 'getDates', () =>
-{
-  it( 'returns all dates of the given year', () =>
-  {
-    const dates = getDates( 2024 )
-    expect( dates.length ).toBe( 366 ) // Leap year
-    expect( dates[ 0 ].toDateString() ).toBe( 'Mon Jan 01 2024' )
-    expect( dates[ 365 ].toDateString() ).toBe( 'Tue Dec 31 2024' )
-  } )
-
-  it( 'returns correct dates for a non-leap year', () =>
-  {
-    const dates = getDates( 2023 )
-    expect( dates.length ).toBe( 365 )
-    expect( dates[ 0 ].toDateString() ).toBe( 'Sun Jan 01 2023' )
-    expect( dates[ 364 ].toDateString() ).toBe( 'Sun Dec 31 2023' )
-  } )
-} )
-
-// Tests for createCalendar
-describe( 'createCalendar', () =>
+// Tests for Calendar.getDates (implicitly tested within createCalendar)
+describe( 'Calendar', () =>
 {
   it( 'creates a calendar with 12 months', () =>
   {
-    const calendar = createCalendar( 2024 )
-    expect( calendar.length ).toBe( 12 )
-    expect( calendar[ 0 ].length ).toBe( 31 )  // January
-    expect( calendar[ 1 ].length ).toBe( 29 )  // February (leap year)
-  } )
+    const calendar = new Calendar( 2024 );
+    expect( calendar.days.length ).toBe( 12 );
+    expect( calendar.getMonth( 1 ).length ).toBe( 31 ); // January
+    expect( calendar.getMonth( 2 ).length ).toBe( 29 ); // February (leap year)
+  } );
 
   it( 'creates days with empty events', () =>
   {
-    const calendar = createCalendar( 2023 )
-    expect( calendar[ 0 ][ 0 ].events ).toEqual( [] )
-  } )
-} )
+    const calendar = new Calendar( 2023 );
+    expect( calendar.getDay( 1, 1 ).events ).toEqual( [] );
+  } );
+
+  it( 'returns all dates of the given year', () =>
+  {
+    const calendar = new Calendar( 2024 );
+    const december = calendar.getMonth( 12 );
+    expect( december.length ).toBe( 31 ); // December in a leap year
+    expect( december[ 0 ].date.toDateString() ).toBe( 'Sun Dec 01 2024' );
+    expect( december[ 30 ].date.toDateString() ).toBe( 'Tue Dec 31 2024' );
+  } );
+
+  it( 'returns correct dates for a non-leap year', () =>
+  {
+    const calendar = new Calendar( 2023 );
+    const december = calendar.getMonth( 12 );
+    expect( december.length ).toBe( 31 ); // December
+    expect( december[ 0 ].date.toDateString() ).toBe( 'Fri Dec 01 2023' );
+    expect( december[ 30 ].date.toDateString() ).toBe( 'Sun Dec 31 2023' );
+  } );
+
+  it( 'adds an event to a specific day', () =>
+  {
+    const calendar = new Calendar( 2023 );
+    calendar.addEvent( 12, 25, "Christmas" );
+    const christmasDay = calendar.getDay( 12, 25 );
+    expect( christmasDay.events ).toContain( "Christmas" );
+  } );
+} );

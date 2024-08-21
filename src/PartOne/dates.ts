@@ -1,19 +1,4 @@
-function get_dates ( year: number ): Date[]
-{
-    let first = new Date( year, 0, 1 );
-    let last = new Date( year, 11, 31 );
-    let dates = [];
-    let current = first;
-    while ( current <= last )
-    {
-        dates.push( new Date( current ) );
-        current.setDate( current.getDate() + 1 );
-    }
-    return dates;
-}
-
-interface DateObject
-{
+interface DateObject {
     year: number;
     month: number;
     day: number;
@@ -22,24 +7,22 @@ interface DateObject
     weekday_name: string;
 }
 
-function parse_dates ( dates: Date[] ): DateObject[]
+function get_dates ( year: number ): DateObject[]
 {
-    let new_dates = [];
-    for ( let date of dates )
-    {
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        let day = date.getDate();
-        let weekday = date.getDay();
-
-        let month_name = date.toLocaleString( "default", { month: "long" } );
-        let weekday_name = date.toLocaleString( "default", { weekday: "long" } );
-
-        new_dates.push( { year, month, day, weekday, month_name, weekday_name } );
+    let dates = [];
+    for (let current = new Date(year, 0, 1); current.getFullYear() === year; current.setDate(current.getDate() + 1)) {
+        dates.push(new Date(current));
     }
-
-    return new_dates;
+    return dates.map(date => ({
+        year: date.getFullYear(),
+        month: date.getMonth() + 1,
+        day: date.getDate(),
+        weekday: date.getDay(),
+        month_name: date.toLocaleString("default", { month: "long" }),
+        weekday_name: date.toLocaleString("default", { weekday: "long" })
+    }));
 }
+
 
 function create_lookup_table ( dates: DateObject[] )
 {
@@ -75,12 +58,12 @@ function gen_html_month ( table: any[][], month: number )
 
     // Row 1: Sun - Sat
     let html_tbody = document.createElement( 'tbody' );
-    html_tbody.innerHTML = `<tr><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th></tr>`;
+    html_tbody.innerHTML = `<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>`;
     html_table.appendChild( html_tbody );
 
     // Rows 2 - 6: Days
     let html_tr = document.createElement( 'tr' );
-    let current_weekday = 1;
+    let current_weekday = 0;
     let current_day = 1;
 
     // Fill in empty days before the first day of the month
@@ -91,22 +74,22 @@ function gen_html_month ( table: any[][], month: number )
     }
 
     // Fill in days of the month
-    while ( current_day < days.length && days[ current_day ] )
+    while ( current_day < days.length )
     {
         html_tr.innerHTML += `<td>${ current_day }</td>`;
         current_day++;
         current_weekday++;
-        if ( current_weekday > 7 )
+
+        if ( current_weekday > 6 )
         {
             html_table.appendChild( html_tr );
             html_tr = document.createElement( 'tr' );
-            current_weekday = 1;
+            current_weekday = 0;
         }
     }
-    console.log( month, current_day, current_weekday );
 
     // Fill in empty days after the last day of the month
-    while ( current_weekday <= 7 && current_weekday !== 1)
+    while ( current_weekday < 7 && current_weekday > 0 )
     {
         html_tr.innerHTML += `<td></td>`;
         current_weekday++;
@@ -118,4 +101,4 @@ function gen_html_month ( table: any[][], month: number )
     return html_table;
 }
 
-export { get_dates, parse_dates, create_lookup_table, gen_html_month };
+export { get_dates, create_lookup_table, gen_html_month };

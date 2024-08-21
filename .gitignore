@@ -1,2 +1,3 @@
-node_modules/
-dist/
+# Directories
+dist/           # This is the build process will output code.
+node_modules/   # The original reason we're here!

@@ -2,14 +2,14 @@
   "name": "social-media-post-manager",
   "type": "module",
   "scripts": {
-    "test": "vitest --run",
-    "test:watch": "vitest",
+    "test": "vitest",
     "test:coverage": "vitest --coverage",
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev:host": "vite --host",
+    "build": "tsc && vite build"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.27.0",
     "@vitejs/plugin-legacy": "^5.4.2",
     "@vitest/coverage-v8": "^2.0.5",
     "terser": "^5.31.6",

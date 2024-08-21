@@ -5,8 +5,6 @@ import { get_dates, create_lookup_table, gen_html_month } from './PartOne/dates'
 
 document.title = `Base URL: ${ BASE_URL }`;
 
-
-
 var app = document.querySelector<HTMLDivElement>( '#app' )!;
 
 var dates = get_dates( 2024 );

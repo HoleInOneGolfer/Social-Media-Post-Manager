@@ -9,11 +9,20 @@ document.addEventListener( 'DOMContentLoaded', () =>
 {
   console.log( 'Base URL:', BASE_URL )
   const main = document.querySelector( 'main' )
+document.addEventListener( 'DOMContentLoaded', () =>
+{
+  console.log( 'Base URL:', BASE_URL )
+  const main = document.querySelector( 'main' )
 
+  const calendar: Calendar = new Calendar( 2024 )
   const calendar: Calendar = new Calendar( 2024 )
 
   if ( main )
   {
     main.appendChild( createYear( calendar.days ) )
+  if ( main )
+  {
+    main.appendChild( createYear( calendar.days ) )
   }
+} )
 } )

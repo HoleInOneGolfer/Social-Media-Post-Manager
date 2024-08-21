@@ -3,6 +3,8 @@ const { BASE_URL } = import.meta.env;
 
 import { get_dates, parse_dates } from './PartOne/dates';
 
+document.querySelector<HTMLDivElement>( '#app' )!.innerHTML = `Base URL: ${ BASE_URL }`;
+
 var dates_2024 = get_dates( 2024 );
 var parse_dates_2024 = parse_dates( dates_2024 );
 console.table( parse_dates_2024 );

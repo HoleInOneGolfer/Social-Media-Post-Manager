@@ -1,6 +1,6 @@
 import '../styles/style.css'
 
-import { createYear } from '../components/calendar.elements'
+import { createYear } from '../components/calendar.element'
 import { Calendar } from './calendar'
 
 const { BASE_URL } = import.meta.env

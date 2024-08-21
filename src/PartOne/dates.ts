@@ -93,7 +93,6 @@ function gen_html_month ( table: any[][], month: number )
     // Fill in days of the month
     while ( current_day < days.length && days[ current_day ] )
     {
-        let day = days[ current_day ];
         html_tr.innerHTML += `<td>${ current_day }</td>`;
         current_day++;
         current_weekday++;

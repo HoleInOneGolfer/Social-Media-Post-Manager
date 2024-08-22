@@ -1,6 +1,6 @@
 import '../styles/style.css';
 
-import { CalendarElement } from '../components/calendar.element';
+import { CalendarElement } from '../components/calendar.elements';
 import { createYear } from '../components/calendar.table.elements';
 import { Calendar } from './calendar';
 

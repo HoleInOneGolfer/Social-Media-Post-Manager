@@ -1,3 +1,90 @@
+/* Light Theme */
+:root {
+  --primary-color: #0057d9;
+  --secondary-color: #ffd700;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --accent-color: #f7a072;
+  --border-color: #cccccc;
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #4a90e2;
+    --secondary-color: #ffb300;
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --accent-color: #f57c00;
+    --border-color: #444444;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/** This is the CSS for the real version of the calendar */
+calendar-element {
+  display: block;
+  margin: 1rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin: 0.5rem 0;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+month-element {
+  display: block;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0.5rem 0;
+  }
+
+  div {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 0.25rem;
+    justify-content: center;
+  }
+}
+day-element {
+  display: block;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  text-align: left;
+
+  /* if the day has the class label, then it is the name of the day */
+  &.label {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+}
+
+/** This is the CSS for the Table version of the calendar */
 .year {
   text-align: center;
   font-family: "Courier New", Courier, monospace;
@@ -14,12 +101,12 @@
     justify-content: center;
 
     table {
-      border: 1px solid black;
+      border: 1px solid var(--border-color);
       margin: 0.5rem 0.25rem;
 
       th,
       td {
-        border: 1px solid black;
+        border: 1px solid var(--border-color);
         padding: 0 0.5rem;
       }
     }

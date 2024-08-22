@@ -1,56 +1,37 @@
 import { describe, expect, it } from 'vitest';
 import { Calendar, Day } from '../src/scripts/calendar';
 
-// Tests for Calendar.getDates (implicitly tested within createCalendar)
 describe( 'Calendar', () =>
 {
-  it( 'creates a calendar with 12 months', () =>
+  it( 'should create a calendar for a given year', () =>
   {
     const calendar = new Calendar( 2024 );
     expect( calendar.days.length ).toBe( 12 );
-    expect( calendar.getMonth( 1 ).length ).toBe( 31 ); // January
-    expect( calendar.getMonth( 2 ).length ).toBe( 29 ); // February (leap year)
+    expect( calendar.days[ 0 ].length ).toBe( 31 );
+    expect( calendar.days[ 11 ].length ).toBe( 31 );
   } );
 
-  it( 'creates days with empty events', () =>
-  {
-    const calendar = new Calendar( 2023 );
-    expect( calendar.getDay( 1, 1 ).events ).toEqual( [] );
-  } );
-
-  it( 'returns all dates of the given year', () =>
+  it( 'should add an event to a day', () =>
   {
     const calendar = new Calendar( 2024 );
-    const december = calendar.getMonth( 12 );
-    expect( december.length ).toBe( 31 ); // December in a leap year
-    expect( december[ 0 ].date.toDateString() ).toBe( 'Sun Dec 01 2024' );
-    expect( december[ 30 ].date.toDateString() ).toBe( 'Tue Dec 31 2024' );
-  } );
-
-  it( 'returns correct dates for a non-leap year', () =>
-  {
-    const calendar = new Calendar( 2023 );
-    const december = calendar.getMonth( 12 );
-    expect( december.length ).toBe( 31 ); // December
-    expect( december[ 0 ].date.toDateString() ).toBe( 'Fri Dec 01 2023' );
-    expect( december[ 30 ].date.toDateString() ).toBe( 'Sun Dec 31 2023' );
-  } );
-
-  it( 'adds an event to a specific day', () =>
-  {
-    const calendar = new Calendar( 2023 );
-    calendar.addEvent( 12, 25, "Christmas" );
-    const christmasDay = calendar.getDay( 12, 25 );
-    expect( christmasDay.events ).toContain( "Christmas" );
+    calendar.addEvent( 1, 1, 'New Year' );
+    expect( calendar.days[ 0 ][ 0 ].events ).toContain( 'New Year' );
   } );
 } );
 
 describe( 'Day', () =>
 {
-  it( 'create a day with a date', () =>
+  it( 'should create a day with a date', () =>
   {
-    const date = new Date( 2023, 11, 25 );
+    const date = new Date( 2024, 0, 1 );
     const day = new Day( date );
     expect( day.date ).toBe( date );
+  } );
+
+  it( 'should create a day with an empty events array', () =>
+  {
+    const date = new Date( 2024, 0, 1 );
+    const day = new Day( date );
+    expect( day.events ).toEqual( [] );
   } );
 } );

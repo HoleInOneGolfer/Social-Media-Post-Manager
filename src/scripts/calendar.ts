@@ -36,4 +36,6 @@ export class Calendar
     }
     return calendar;
   }
+
+  addEvent ( month: number, day: number, event: string ): void { this.days[ month - 1 ][ day - 1 ].events.push( event ); }
 }

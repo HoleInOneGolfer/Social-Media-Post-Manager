@@ -25,5 +25,6 @@
     "searchInComments": true,
     "plugin": [
         "typedoc-plugin-markdown"
-    ]
+    ],
+    "commentStyle": "line"
 }

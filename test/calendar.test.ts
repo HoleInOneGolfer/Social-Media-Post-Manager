@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Calendar } from '../src/scripts/calendar';
+import { Calendar, Day } from '../src/scripts/calendar';
 
 // Tests for Calendar.getDates (implicitly tested within createCalendar)
 describe( 'Calendar', () =>
@@ -42,5 +42,15 @@ describe( 'Calendar', () =>
     calendar.addEvent( 12, 25, "Christmas" );
     const christmasDay = calendar.getDay( 12, 25 );
     expect( christmasDay.events ).toContain( "Christmas" );
+  } );
+} );
+
+describe( 'Day', () =>
+{
+  it( 'create a day with a date', () =>
+  {
+    const date = new Date( 2023, 11, 25 );
+    const day = new Day( date );
+    expect( day.date ).toBe( date );
   } );
 } );

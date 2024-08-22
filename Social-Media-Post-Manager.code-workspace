@@ -38,6 +38,14 @@
 				"cwd": "${workspaceFolder}"
 			}
 		],
-		"compounds": []
+		"compounds": [
+			{
+				"name": "Launch Chrome and Run Dev Script",
+				"configurations": [
+					"Launch Chrome",
+					"Run Script: dev"
+				]
+			}
+		]
 	}
 }

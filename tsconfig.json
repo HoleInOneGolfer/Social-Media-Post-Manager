@@ -1,12 +1,20 @@
 {
   "compilerOptions": {
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     "forceConsistentCasingInFileNames": true,
-    "target": "ESNext",
+    "target": "ES2015",
     "lib": [
       "ESNext",
       "DOM",
       "DOM.Iterable",
     ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
     "moduleDetection": "force",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -30,7 +38,7 @@
     "src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "dist",
+    "node_modules/**",
+    "dist/**",
   ],
 }

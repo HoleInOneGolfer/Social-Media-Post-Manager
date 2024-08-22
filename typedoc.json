@@ -23,4 +23,7 @@
     },
     "searchInDocuments": true,
     "searchInComments": true,
+    "plugin": [
+        "typedoc-plugin-markdown"
+    ]
 }

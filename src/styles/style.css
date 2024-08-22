@@ -1,3 +1,33 @@
+/* Light Theme */
+:root {
+  --primary-color: #0057d9;
+  --secondary-color: #ffd700;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --accent-color: #f7a072;
+  --border-color: #cccccc;
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #4a90e2;
+    --secondary-color: #ffb300;
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --accent-color: #f57c00;
+    --border-color: #444444;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .year {
   text-align: center;
   font-family: "Courier New", Courier, monospace;
@@ -14,12 +44,12 @@
     justify-content: center;
 
     table {
-      border: 1px solid black;
+      border: 1px solid var(--border-color);
       margin: 0.5rem 0.25rem;
 
       th,
       td {
-        border: 1px solid black;
+        border: 1px solid var(--border-color);
         padding: 0 0.5rem;
       }
     }

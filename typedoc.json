@@ -1,0 +1,12 @@
+{
+    "entryPoints": [
+        "./src/**/*.ts"
+    ],
+    "out": "docs",
+    "exclude": [
+        "**/*.test.ts",
+        "**/tests/**"
+    ],
+    "tsconfig": "./tsconfig.json",
+    "readme": "./README.md",
+}

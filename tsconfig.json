@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "forceConsistentCasingInFileNames": true,
-    "target": "ES2020",
+    "target": "ESNext",
     "lib": [
-      "ES2020",
+      "ESNext",
       "DOM",
       "DOM.Iterable",
-      "ES2015"
     ],
     "moduleDetection": "force",
     "useDefineForClassFields": true,
@@ -28,15 +27,10 @@
     "skipDefaultLibCheck": true
   },
   "include": [
-    "src"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
-    "node_modules/**/**",
-    "test/**",
-    "**/*.test.ts",
-    "docs",
-    "coverage",
-    "dist"
-  ]
+    "dist",
+  ],
 }

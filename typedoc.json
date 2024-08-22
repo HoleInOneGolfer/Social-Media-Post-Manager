@@ -1,0 +1,26 @@
+{
+    "entryPoints": [
+        "./src/**/*.ts"
+    ],
+    "exclude": [
+        "**/node_modules/**",
+        "**/test/**",
+        "**/dist/**",
+        "**/*.d.ts"
+    ],
+    "tsconfig": "./tsconfig.json",
+    "name": "Social Media Post Manager Documentation",
+    "readme": "./README.md",
+    "excludeReferences": true,
+    "includeVersion": true,
+    "hideGenerator": true,
+    "cleanOutputDir": true,
+    "out": "docs",
+    "navigation": {
+        "includeCategories": true,
+        "includeFolders": true,
+        "includeGroups": true
+    },
+    "searchInDocuments": true,
+    "searchInComments": true,
+}

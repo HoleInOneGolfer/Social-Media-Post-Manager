@@ -1,7 +1,10 @@
+import { DayElement } from "../components/calendar.element";
+
 export class Day
 {
   date: Date
   events: string[]
+  day_element?: DayElement;
 
   constructor ( date: Date )
   {

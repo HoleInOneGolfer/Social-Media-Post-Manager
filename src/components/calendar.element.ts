@@ -1,4 +1,4 @@
-import type { Day } from '../scripts/calendar'
+import { Calendar, type Day } from '../scripts/calendar'
 
 export function createMonth ( month: Day[] )
 {
@@ -80,3 +80,67 @@ export function createYear ( year: Day[][] )
 
   return outer_shell
 }
+
+export class CalendarElement extends HTMLElement
+{
+  private calendar: Calendar;
+
+  constructor ( year: number )
+  {
+    super();
+    this.calendar = new Calendar( year );
+
+    this.render();
+  }
+
+  getDays (): Day[][]
+  {
+    return this.calendar.days;
+  }
+
+  getMonth ( month: number ): Day[]
+  {
+    return this.calendar.getMonth( month );
+  }
+
+  getDay ( month: number, day: number ): Day
+  {
+    return this.calendar.getDay( month, day );
+  }
+
+  addEvent ( month: number, day: number, event: string )
+  {
+    this.calendar.addEvent( month, day, event );
+  }
+
+  render ()
+  {
+    this.appendChild( createYear( this.calendar.days ) );
+  }
+}
+
+export class MonthElement extends HTMLElement
+{
+  month: Day[]
+
+  constructor ( month: Day[] )
+  {
+    super();
+    this.month = month;
+  }
+}
+
+export class DayElement extends HTMLElement
+{
+  day: Day
+
+  constructor ( day: Day )
+  {
+    super();
+    this.day = day;
+  }
+}
+
+customElements.define( 'day-element', DayElement );
+customElements.define( 'month-element', MonthElement );
+customElements.define( 'calendar-element', CalendarElement );

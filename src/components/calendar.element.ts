@@ -1,146 +1,62 @@
-import { Calendar, type Day } from '../scripts/calendar'
+import { Calendar, type Day } from '../scripts/calendar';
 
-export function createMonth ( month: Day[] )
+export class DayElement extends HTMLElement
 {
-  const month_name = month[ 0 ].date.toLocaleString( 'default', { month: 'long' } )
-
-  const table = document.createElement( 'table' )
-  const thead = document.createElement( 'thead' )
-  const tbody = document.createElement( 'tbody' )
-
-  let tr = document.createElement( 'tr' )
-  const th = document.createElement( 'th' )
-  th.colSpan = 7
-  th.textContent = month_name
-  tr.appendChild( th )
-  thead.appendChild( tr )
-
-  tr = document.createElement( 'tr' );
-  [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ].forEach( ( day ) =>
+  day: Day;
+  constructor ( day: Day )
   {
-    const th = document.createElement( 'th' )
-    th.textContent = day
-    tr.appendChild( th )
-  } )
-  thead.appendChild( tr )
+    super()
+    this.day = day;
 
-  // populate the empty dates at the beginning of the month
-  const first_day = month[ 0 ].date.getDay()
-  tr = document.createElement( 'tr' )
-  for ( let i = 0; i < first_day; i++ )
-  {
-    const td = document.createElement( 'td' )
-    tr.appendChild( td )
-  }
-
-  month.forEach( ( day ) =>
-  {
-    const td = document.createElement( 'td' )
-    td.textContent = day.date.getDate().toString()
-    td.id = day.date.toDateString().split( ' ' ).join( '-' )
-    tr.appendChild( td )
-
-    if ( tr.children.length === 7 )
-    {
-      tbody.appendChild( tr )
-      tr = document.createElement( 'tr' )
-    }
-  } )
-
-  // populate the empty dates at the end of the month
-  const last_day = month[ month.length - 1 ].date.getDay()
-  for ( let i = last_day + 1; i < 7; i++ )
-  {
-    const td = document.createElement( 'td' )
-    tr.appendChild( td )
-  }
-
-  table.appendChild( thead )
-  table.appendChild( tbody )
-  return table
-}
-
-export function createYear ( year: Day[][] )
-{
-  const outer_shell = document.createElement( 'div' )
-  outer_shell.classList.add( 'year' )
-
-  const title = document.createElement( 'h1' )
-  title.textContent = year[ 0 ][ 0 ].date.getFullYear().toString()
-  outer_shell.appendChild( title )
-
-  const container = document.createElement( 'div' )
-  container.classList.add( 'container' )
-  outer_shell.appendChild( container )
-
-  year.forEach( ( month ) =>
-  {
-    container.appendChild( createMonth( month ) )
-  } )
-
-  return outer_shell
-}
-
-export class CalendarElement extends HTMLElement
-{
-  private calendar: Calendar;
-
-  constructor ( year: number )
-  {
-    super();
-    this.calendar = new Calendar( year );
-
-    this.render();
-  }
-
-  getDays (): Day[][]
-  {
-    return this.calendar.days;
-  }
-
-  getMonth ( month: number ): Day[]
-  {
-    return this.calendar.getMonth( month );
-  }
-
-  getDay ( month: number, day: number ): Day
-  {
-    return this.calendar.getDay( month, day );
-  }
-
-  addEvent ( month: number, day: number, event: string )
-  {
-    this.calendar.addEvent( month, day, event );
-  }
-
-  render ()
-  {
-    this.appendChild( createYear( this.calendar.days ) );
+    //set id to yyyy-mm-dd
+    this.id = day.date.toISOString().split( 'T' )[ 0 ];
   }
 }
 
 export class MonthElement extends HTMLElement
 {
-  month: Day[]
-
+  month: Day[];
+  day_elements: DayElement[] = [];
   constructor ( month: Day[] )
   {
-    super();
+    super()
     this.month = month;
+
+    //set id to yyyy-mm
+    this.id = month[ 0 ].date.toISOString().split( 'T' )[ 0 ].slice( 0, 7 );
+
+    // populate day_elements and append them to `this`
+    this.day_elements = this.month.map( ( day ) => new DayElement( day ) );
+
+    this.day_elements.forEach( ( day_element ) =>
+    {
+      this.appendChild( day_element )
+    } )
   }
 }
 
-export class DayElement extends HTMLElement
+export class CalendarElement extends HTMLElement
 {
-  day: Day
-
-  constructor ( day: Day )
+  calendar: Calendar;
+  month_elements: MonthElement[] = [];
+  constructor ( year: number )
   {
-    super();
-    this.day = day;
+    super()
+    this.calendar = new Calendar( year );
+
+    //set id to yyyy
+    this.id = year.toString();
+
+    // populate month_elements and append them to `this`
+    this.month_elements = this.calendar.days.map( ( month ) => new MonthElement( month ) );
+
+    this.month_elements.forEach( ( month_element ) =>
+    {
+      this.appendChild( month_element )
+    } )
   }
 }
 
-customElements.define( 'day-element', DayElement );
-customElements.define( 'month-element', MonthElement );
-customElements.define( 'calendar-element', CalendarElement );
+customElements.define( 'day-element', DayElement )
+customElements.define( 'month-element', MonthElement )
+customElements.define( 'calendar-element', CalendarElement )

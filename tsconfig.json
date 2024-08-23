@@ -1,27 +1,23 @@
 {
   "compilerOptions": {
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
-    "forceConsistentCasingInFileNames": true,
-    "target": "ES2015",
+    "target": "ESNext",
     "lib": [
       "ESNext",
-      "DOM",
-      "DOM.Iterable",
+      "DOM"
     ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
     "paths": {
       "@/*": [
         "./src/*"
       ]
     },
-    "moduleDetection": "force",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     "useDefineForClassFields": true,
-    "module": "ESNext",
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    /* Linting */
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -31,14 +27,13 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "skipDefaultLibCheck": true
+    "noUnusedParameters": true
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
-    "node_modules/**",
-    "dist/**",
-  ],
+    "node_modules",
+    "dist"
+  ]
 }

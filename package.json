@@ -2,22 +2,15 @@
   "name": "social-media-post-manager",
   "type": "module",
   "scripts": {
-    "test": "vitest",
-    "test:coverage": "vitest --coverage",
     "dev": "vite",
     "dev:host": "vite --host",
-    "build": "tsc && vite build",
-    "build:docs": "typedoc"
+    "build": "tsc && vite build"
   },
   "devDependencies": {
     "@types/node": "^22.5.0",
     "@vitejs/plugin-legacy": "^5.4.2",
-    "@vitest/coverage-v8": "^2.0.5",
-    "terser": "^5.31.6",
     "typedoc": "^0.26.6",
-    "typedoc-plugin-markdown": "^4.2.5",
     "typescript": "^5.5.4",
-    "vite": "^5.4.1",
-    "vitest": "^2.0.5"
+    "vite": "^5.4.1"
   }
 }

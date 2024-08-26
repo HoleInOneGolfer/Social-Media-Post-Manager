@@ -7,7 +7,8 @@
   "settings": {
     "files.exclude": {
       "node_modules": true,
-      "dist": true
+      "dist": true,
+      "package-lock.json": true
     },
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
@@ -18,7 +19,6 @@
       "source.organizeLinkDefinitions": "always"
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "cSpell.enabled": false
   },
   "launch": {
     "version": "0.2.0",
@@ -41,7 +41,10 @@
     "compounds": [
       {
         "name": "Launch Chrome and Run Dev Script",
-        "configurations": ["Launch Chrome", "Run Script: dev"]
+        "configurations": [
+          "Launch Chrome",
+          "Run Script: dev"
+        ]
       }
     ]
   }

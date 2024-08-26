@@ -1,4 +1,4 @@
-import { Day } from "@/scripts/calendar"
+import { Day } from "../scripts/calendar"
 
 export function createMonth ( month: Day[] )
 {

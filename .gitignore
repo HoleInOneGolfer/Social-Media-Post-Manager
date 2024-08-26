@@ -9,16 +9,9 @@ lerna-debug.log*
 
 node_modules
 docs
-dist
-dist-ssr
 *.local
-coverage
 
 # Editor directories and files
-.vscode/*
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 .idea
 .DS_Store
 *.suo

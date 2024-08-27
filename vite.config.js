@@ -10,7 +10,4 @@ export default defineConfig({
     outDir: "docs",
     emptyOutDir: true,
   },
-  define: {
-    "process.env": loadEnv(".env", process.cwd()),
-  },
 });
